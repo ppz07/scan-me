@@ -2,17 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SCAN ME</title>
+<title>Next Clue</title>
 
 <style>
-@keyframes scan { from { top: 0; } to { top: 100%; } }
-@keyframes pulse { from { opacity: 0.5; } to { opacity: 1; } }
-@keyframes glitch {
-  0% { text-shadow: 2px 0 cyan, -2px 0 magenta; }
-  50% { text-shadow: -2px 0 cyan, 2px 0 magenta; }
-  100% { text-shadow: 2px 0 cyan, -2px 0 magenta; }
-}
-
+/* Background grid + sci-fi style */
 body {
   margin: 0;
   height: 100vh;
@@ -28,128 +21,77 @@ body {
   color: #00ffff;
 }
 
+/* Panel styling */
 .panel {
-  padding: 45px 70px;
-  background: rgba(5, 20, 40, 0.96);
+  padding: 50px 60px;
+  background: rgba(5, 20, 40, 0.95);
   border-radius: 20px;
   border: 2px solid #00ffff;
   box-shadow: 0 0 40px rgba(0,255,255,0.7);
   text-align: center;
-  max-width: 520px;
+  max-width: 600px;
+  animation: flicker 4s infinite;
+}
+
+/* Glitchy header animation */
+@keyframes glitch {
+  0% { text-shadow: 2px 0 cyan, -2px 0 rgb(0, 42, 255); }
+  50% { text-shadow: -2px 0 cyan, 2px 0 rgb(0, 42, 255); }
+  100% { text-shadow: 2px 0 cyan, -2px 0 rgb(17, 255, 0); }
+}
+
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Pulsing highlight for clue text */
+@keyframes pulse {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
 }
 
 h1 {
-  font-size: 64px;
-  letter-spacing: 6px;
-  animation: glitch 1.5s infinite;
-}
-
-.subtitle {
-  letter-spacing: 4px;
-  opacity: 0.8;
+  font-size: 60px;
   margin-bottom: 20px;
-}
-
-.qr-box {
-  width: 260px;
-  height: 260px;
-  margin: 20px auto;
-  position: relative;
-  background: #47bdef;
-  border: 3px solid red;
-  overflow: hidden;
-}
-
-.qr-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.corner {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  border: 4px solid red;
-}
-.tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-.tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
-.bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
-.br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
-
-.laser {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, transparent, red, transparent);
-  animation: scan 2.2s linear infinite;
-}
-
-.status {
-  margin-top: 12px;
-  letter-spacing: 3px;
-}
-
-.granted {
-  display: none;
-  margin-top: 18px;
-  font-size: 30px;
-  color: #00ff66;
-  text-shadow: 0 0 18px #00ff66;
-  animation: pulse 0.6s infinite alternate;
+  letter-spacing: 6px;
+  animation: glitch 2.5s infinite;
 }
 
 .next {
-  display: none;
-  margin-top: 20px;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.6;
   color: #ffffff;
   background: rgba(0,255,255,0.08);
-  border: 1px solid #00ffff;
+  border: 1px solid #00f2ff;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
+  animation: pulse 1s infinite alternate;
+}
+
+/* Optional glowing effect around panel */
+.panel::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 25px;
+  border: 2px solid rgb(0, 0, 255);
+  box-shadow: 0 0 50px rgb(0, 34, 255);
+  pointer-events: none;
 }
 </style>
 </head>
 
 <body>
 <div class="panel">
-  <h1>SCAN ME</h1>
-  <div class="subtitle">SECURE SYSTEM ACCESS</div>
-
-  <div class="qr-box" id="box">
-    <!-- LOCAL QR IMAGE -->
-    <img src="qr.png" alt="QR Code">
-
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
-    <div class="laser" id="laser"></div>
-  </div>
-
-  <div class="status" id="status">SCANNING…</div>
-  <div class="granted" id="granted">ACCESS GRANTED</div>
-
-  <div class="next" id="next">
+  <h1>Good Job!</h1>
+  <div class="next">
     ✅ Authorization complete<br><br>
-    👉 <strong>Next Step:</strong><br>
-    Proceed to <strong>Station 2</strong> to see the experiment<br>
-    OR ask the presenter for the next challenge
+    👉 Proceed to <strong>the place where you started</strong> to redeem your prize!<br>
   </div>
 </div>
-
-<script>
-setTimeout(() => {
-  document.getElementById("laser").style.background =
-    "linear-gradient(to right, transparent, #00ff66, transparent)";
-  document.getElementById("box").style.borderColor = "#00ff66";
-  document.getElementById("status").style.display = "none";
-  document.getElementById("granted").style.display = "block";
-  document.getElementById("next").style.display = "block";
-}, 3500);
-</script>
 </body>
 </html>
