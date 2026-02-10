@@ -1,97 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Next Clue</title>
-
-<style>
-/* Background grid + sci-fi style */
-body {
-  margin: 0;
-  height: 100vh;
-  background:
-    linear-gradient(rgba(0,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,255,0.06) 1px, transparent 1px),
-    radial-gradient(circle at top, #051c2f, #020812);
-  background-size: 40px 40px, 40px 40px, cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Orbitron", Arial, sans-serif;
-  color: #00ffff;
-}
-
-/* Panel styling */
-.panel {
-  padding: 50px 60px;
-  background: rgba(5, 20, 40, 0.95);
-  border-radius: 20px;
-  border: 2px solid #00ffff;
-  box-shadow: 0 0 40px rgba(0,255,255,0.7);
-  text-align: center;
-  max-width: 600px;
-  animation: flicker 4s infinite;
-}
-
-/* Glitchy header animation */
-@keyframes glitch {
-  0% { text-shadow: 2px 0 cyan, -2px 0 rgb(0, 42, 255); }
-  50% { text-shadow: -2px 0 cyan, 2px 0 rgb(0, 42, 255); }
-  100% { text-shadow: 2px 0 cyan, -2px 0 rgb(17, 255, 0); }
-}
-
-@keyframes flicker {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-/* Pulsing highlight for clue text */
-@keyframes pulse {
-  from { opacity: 0.5; }
-  to { opacity: 1; }
-}
-
-h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
-  letter-spacing: 6px;
-  animation: glitch 2.5s infinite;
-}
-
-.next {
-  font-size: 22px;
-  line-height: 1.6;
-  color: #ffffff;
-  background: rgba(0,255,255,0.08);
-  border: 1px solid #00f2ff;
-  border-radius: 12px;
-  padding: 20px;
-  animation: pulse 1s infinite alternate;
-}
-
-/* Optional glowing effect around panel */
-.panel::after {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
-  border-radius: 25px;
-  border: 2px solid rgb(0, 0, 255);
-  box-shadow: 0 0 50px rgb(0, 34, 255);
-  pointer-events: none;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can You See Me?</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', sans-serif;
+            color: #333;
+        }
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            border: 3px dashed #333;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+        }
+    </style>
 </head>
-
 <body>
-<div class="panel">
-  <h1>Good Job!</h1>
-  <div class="next">
-    ✅ Authorization complete<br><br>
-    👉 Proceed to <strong>the place where you started</strong> to redeem your prize!<br>
-  </div>
-</div>
+    <h1>Can You See Me?</h1>
 </body>
 </html>
